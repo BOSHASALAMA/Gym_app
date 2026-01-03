@@ -1,3 +1,4 @@
+"use cache";
 import type { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
@@ -31,40 +32,22 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider
-      appearance={{
-        baseTheme: dark,
-        elements: {
-          rootBox: "shadow-none",
-        },
-        layout: {
-          unsafe_disableDevelopmentModeWarnings: true,
-        },
-      }}
-      dynamic
-      publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
-    >
-      <html lang="en">
-        <head>
-          <link
-            rel="preload"
-            href="/_next/static/css/ab11c5d62603349e.css"
-            as="style"
-          />
-          <link rel="dns-prefetch" href="https://clerk.accounts.dev" />
-          <link rel="preconnect" href="https://clerk.accounts.dev" />
-        </head>
-        <body className={`${geistSans.variable} ${geistMono.variable} relative bg-black`}>
-          <Provider>
-            <Suspense >
+    <Suspense>
+      <ClerkProvider appearance={{ baseTheme: dark  ,elements: {
+          rootBox: "shadow-none"
+        }}} >
+        <Provider>
+          <html lang="en">
+            <body className="relative bg-black ">
               <Header />
+
               {children}
               <Footer />
-            </Suspense>
-            <Toaster />
-          </Provider>
-        </body>
-      </html>
-    </ClerkProvider>
+            </body>
+          </html>
+        </Provider>
+      </ClerkProvider>
+      <Toaster />
+    </Suspense>
   );
 }
