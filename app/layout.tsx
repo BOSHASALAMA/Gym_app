@@ -31,46 +31,41 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <Suspense>
-      <ClerkProvider
-        appearance={{
-          baseTheme: dark,
-          elements: {
-            rootBox: "shadow-none",
-          },
-        }}
-        dynamic
-        signInUrl="/sign-in"
-        signUpUrl="/sign-up"
-        afterSignInUrl="/"
-        afterSignUpUrl="/"
-      >
-        <Provider>
-          <html
-            lang="en"
-          
-          >
-              <link rel="dns-prefetch" href="https://clerk.accounts.dev" />
-              <link
-                rel="preconnect"
-                href="https://clerk.accounts.dev"
-                crossOrigin="anonymous"
-              />
-              <meta
-                name="viewport"
-                content="width=device-width, initial-scale=1"
-              />
+    <ClerkProvider
+      appearance={{
+        baseTheme: dark,
+        elements: {
+          rootBox: "shadow-none",
+        },
+      }}
+      dynamic
+      signInUrl="/sign-in"
+      signUpUrl="/sign-up"
+      afterSignInUrl="/"
+      afterSignUpUrl="/"
+    >
+      <html lang="en">
+        <link rel="dns-prefetch" href="https://clerk.accounts.dev" />
+        <link
+          rel="preconnect"
+          href="https://clerk.accounts.dev"
+          crossOrigin="anonymous"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-            <body className="relative bg-black ">
+        <body className="relative bg-black ">
+          <Provider>
+            <Suspense fallback={<div className="min-h-screen bg-black" />}>
               <Header />
 
               {children}
               <Footer />
-            </body>
-          </html>
-        </Provider>
-      </ClerkProvider>
-      <Toaster />
-    </Suspense>
+            </Suspense>
+
+            <Toaster />
+          </Provider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
