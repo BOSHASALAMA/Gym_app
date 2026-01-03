@@ -1,4 +1,3 @@
-"use cache";
 import type { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
@@ -33,11 +32,22 @@ export default async function RootLayout({
 }>) {
   return (
     <Suspense>
-      <ClerkProvider appearance={{ baseTheme: dark  ,elements: {
-          rootBox: "shadow-none"
-        }}} >
+      <ClerkProvider
+        appearance={{
+          baseTheme: dark,
+          elements: {
+            rootBox: "shadow-none",
+          },
+        }}
+      >
         <Provider>
           <html lang="en">
+            <link rel="dns-prefetch" href="https://clerk.accounts.dev" />
+            <link
+              rel="preconnect"
+              href="https://clerk.accounts.dev"
+              crossOrigin="anonymous"
+            />
             <body className="relative bg-black ">
               <Header />
 
