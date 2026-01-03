@@ -35,7 +35,7 @@ export default async function Programms() {
             alt={program.title}
             fill
             loading="lazy"
-            quality={75}
+            quality={65}
             sizes="(max-width: 768px) 100vw, 25vw"
             className="object-cover object-center -z-10"
           />
