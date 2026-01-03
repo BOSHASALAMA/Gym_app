@@ -46,17 +46,22 @@ export default async function RootLayout({
         afterSignUpUrl="/"
       >
         <Provider>
-          <html lang="en">
-            <link rel="dns-prefetch" href="https://clerk.accounts.dev" />
-            <link
-              rel="preconnect"
-              href="https://clerk.accounts.dev"
-              crossOrigin="anonymous"
-            />
-            <meta
-              name="viewport"
-              content="width=device-width, initial-scale=1"
-            />
+          <html
+            lang="en"
+            className={`${geistSans.variable} ${geistMono.variable}`}
+          >
+            <head>
+              <link rel="dns-prefetch" href="https://clerk.accounts.dev" />
+              <link
+                rel="preconnect"
+                href="https://clerk.accounts.dev"
+                crossOrigin="anonymous"
+              />
+              <meta
+                name="viewport"
+                content="width=device-width, initial-scale=1"
+              />
+            </head>
 
             <body className="relative bg-black ">
               <Header />
