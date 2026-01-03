@@ -1,6 +1,6 @@
-'use client'
-import { useState } from 'react';
-import { toast } from 'sonner';
+"use client";
+import { useState } from "react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 
 interface PlanInfo {
@@ -27,29 +27,29 @@ export default function PaymentForm({ selectedPlan }: PaymentFormProps) {
       phone: formData.get("phone"),
       expiryDate: formData.get("expiryDate"),
       cvv: formData.get("cvv"),
-      email: formData.get("email")
+      email: formData.get("email"),
     };
-    
+
     console.log("Sending payment request:", payload);
-    
+
     try {
-      const response = await fetch('/api/payment', {
-        method: 'POST',
+      const response = await fetch("/api/payment", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(payload)
+        body: JSON.stringify(payload),
       });
 
       console.log("Response status:", response.status);
-      
+
       let text = "";
       let data: any = {};
-      
+
       try {
         text = await response.text();
         console.log("Got response text:", text);
-        
+
         if (text) {
           console.log("Attempting to parse:", text);
           data = JSON.parse(text);
@@ -57,18 +57,18 @@ export default function PaymentForm({ selectedPlan }: PaymentFormProps) {
         }
       } catch (err) {
         console.error("Error reading/parsing response:", err);
-        toast.error('Server error. Please try again.');
+        toast.error("Server error. Please try again.");
         return;
       }
 
       if (!response.ok) {
-        const errorMsg = data?.error || 'Payment failed. Please try again.';
+        const errorMsg = data?.error || "Payment failed. Please try again.";
         console.log("Setting error message:", errorMsg);
         toast.error(errorMsg);
         return;
       }
 
-      toast.success('Payment successful! Thank you for your purchase.');
+      toast.success("Payment successful! Thank you for your purchase.");
       // Reset form after success
       try {
         const formElement = e.currentTarget;
@@ -76,12 +76,15 @@ export default function PaymentForm({ selectedPlan }: PaymentFormProps) {
           formElement.reset();
         }
       } catch (resetErr) {
-        console.warn('Could not reset form:', resetErr);
+        console.warn("Could not reset form:", resetErr);
       }
     } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : 'An error occurred. Please try again.';
+      const errorMessage =
+        err instanceof Error
+          ? err.message
+          : "An error occurred. Please try again.";
       toast.error(errorMessage);
-      console.error('Payment error:', err);
+      console.error("Payment error:", err);
     } finally {
       setLoading(false);
     }
@@ -96,9 +99,7 @@ export default function PaymentForm({ selectedPlan }: PaymentFormProps) {
             <div className="flex justify-between items-center">
               <div>
                 <p className="text-gray-400 text-sm mb-1">Selected Plan</p>
-                <h2 className="text-2xl font-bold">
-                  {selectedPlan.name} Plan
-                </h2>
+                <h2 className="text-2xl font-bold">{selectedPlan.name} Plan</h2>
               </div>
               <div className="text-right">
                 <p className="text-gray-400 text-sm mb-1">Monthly Price</p>

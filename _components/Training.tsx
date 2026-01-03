@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import React from "react";
 
-export const Training = async () => {
+export default async function Training() {
   return (
     <section className="text-white bg-linear-to-r from-black via-red-500/35  to-black">
       <div className="flex md:flex-row flex-col justify-center p-8">
@@ -54,13 +54,17 @@ export const Training = async () => {
       <div className="grid grid-cols-1 md:grid-cols-2 pt-12 ">
         <div className='bg-[url("/train1.webp")] bg-cover bg-center flex flex-col gap-3 items-center justify-center text-white h-80 md:h-120'>
           <h1 className="text-4xl md:text-6xl font-bold">Personal traning</h1>
-          <Link href="/personal" prefetch={true}><Button>VIEW COURSES</Button></Link>
+          <Link href="/personal" prefetch={true}>
+            <Button>VIEW COURSES</Button>
+          </Link>
         </div>
         <div className='bg-[url("/train2.webp")] bg-cover bg-center flex flex-col gap-3 items-center justify-center text-white h-80 md:h-120'>
           <h1 className="text-4xl md:text-6xl font-bold">Group traning</h1>
-           <Link href="/group" prefetch={true}><Button>VIEW COURSES</Button></Link>
+          <Link href="/group" prefetch={true}>
+            <Button>VIEW COURSES</Button>
+          </Link>
         </div>{" "}
       </div>
     </section>
   );
-};
+}

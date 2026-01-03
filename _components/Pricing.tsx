@@ -3,9 +3,12 @@ import { Button } from "@/components/ui/button";
 import React from "react";
 import Link from "next/link";
 
-export const Pricing = async () => {
+export default async function Pricing() {
   return (
-    <section className="pb-10 text-white bg-linear-to-r from-black via-red-500/35  to-black text-center" id="pricing">
+    <section
+      className="pb-10 text-white bg-linear-to-r from-black via-red-500/35  to-black text-center"
+      id="pricing"
+    >
       <h1 className="font-extrabold md:text-5xl py-10">CHOOSE YOUR PLAN</h1>
       <div className="flex flex-wrap items-center justify-center gap-6">
         <div className="w-72  text-center border-2 border-red-500 p-6 pb-16 rounded-lg">
@@ -326,4 +329,4 @@ export const Pricing = async () => {
       </div>
     </section>
   );
-};
+}

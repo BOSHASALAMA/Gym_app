@@ -2,7 +2,7 @@
 import Image from "next/image";
 import React from "react";
 
-export const CrossFit = async () => {
+export default async function CrossFit() {
   return (
     <>
       <section className="grid grid-cols-1 md:grid-cols-2 py-24 px-4 md:px-14 text-white bg-linear-to-r from-black via-red-500/35  to-black">
@@ -42,4 +42,4 @@ export const CrossFit = async () => {
       </div>
     </>
   );
-};
+}

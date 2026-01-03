@@ -1,8 +1,9 @@
-import PaymentPage from '@/_components/PaymentPage';
+import PaymentPage from "@/_components/PaymentPage";
 
 export const metadata = {
-  title: 'Complete Your Payment - Gym Membership',
-  description: 'Secure payment page to complete your gym membership subscription',
+  title: "Complete Your Payment - Gym Membership",
+  description:
+    "Secure payment page to complete your gym membership subscription",
 };
 
 const plansData: Record<string, { name: string; price: number }> = {

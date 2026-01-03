@@ -1,13 +1,14 @@
 "use cache";
 
-
 import { ContactForm } from "./ContactForm";
 
-const Contact = async() => {
-  
+const Contact = async () => {
   return (
     <>
-      <div className="text-white bg-linear-to-r from-black via-red-500/35  to-black pt-24" id="contact">
+      <div
+        className="text-white bg-linear-to-r from-black via-red-500/35  to-black pt-24"
+        id="contact"
+      >
         <h1 className="md:text-5xl font-extrabold text-center">CONTACT US</h1>
       </div>
       <section className="relative text-white bg-linear-to-r from-black via-red-500/35  to-black flex flex-col md:flex-row justify-center px-4 py-20 gap-20">
@@ -45,7 +46,7 @@ const Contact = async() => {
         </div>
 
         <div className="w-full max-w-lg bg-[#00A63E]/0 backdrop-blur-sm border border-white/10 rounded-xl p-8">
-        <ContactForm/>
+          <ContactForm />
         </div>
       </section>
     </>

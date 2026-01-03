@@ -2,9 +2,12 @@
 import React from "react";
 import { HoverEffect } from "@/components/ui/card-hover-effect";
 
-export const Offers = async () => {
+export default async function Offers() {
   return (
-    <section className="py-8 bg-linear-to-r from-black via-red-500/35  to-black" id="about">
+    <section
+      className="py-8 bg-linear-to-r from-black via-red-500/35  to-black"
+      id="about"
+    >
       <h1 className="text-white text-center text-4xl md:text-6xl font-extrabold">
         WHAT WE OFFER
       </h1>
@@ -13,7 +16,7 @@ export const Offers = async () => {
       </div>
     </section>
   );
-};
+}
 
 export const projects = [
   {

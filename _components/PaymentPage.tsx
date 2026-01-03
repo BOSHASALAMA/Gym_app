@@ -1,4 +1,4 @@
-import PaymentForm from './PaymentForm';
+import PaymentForm from "./PaymentForm";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 

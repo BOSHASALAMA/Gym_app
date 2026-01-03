@@ -1,7 +1,7 @@
 "use cache";
 import { Button } from "@/components/ui/button";
 
-export const Programms = async () => {
+export default async function Programms() {
   return (
     <section className="flex flex-col md:flex-row text-white">
       <div className='bg-[url("/class-1.webp")] bg-cover bg-center py-44 px-11 flex flex-col '>
@@ -34,4 +34,4 @@ export const Programms = async () => {
       </div>
     </section>
   );
-};
+}

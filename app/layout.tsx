@@ -1,17 +1,14 @@
-'use cache'
+"use cache";
 import type { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
-import { Toaster } from "@/components/ui/sonner"
-
+import { Toaster } from "@/components/ui/sonner";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/_components/Header";
 import { Suspense } from "react";
 import Provider from "./Provider";
 import Footer from "@/_components/Footer";
-
- 
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,7 +23,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "FITNESS GYM",
   description: "WITH PATRIC POTTER",
-  viewport: 'width=device-width, initial-scale=1',
+  viewport: "width=device-width, initial-scale=1",
 };
 
 export default async function RootLayout({
@@ -35,24 +32,20 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    
     <Suspense>
-
       <ClerkProvider appearance={{ baseTheme: dark }}>
         <Provider>
-        <html lang="en">
-          <body className="relative bg-black ">
-            <Header />
+          <html lang="en">
+            <body className="relative bg-black ">
+              <Header />
 
-            {children}
-            <Footer/>
-          </body>
-        </html>
+              {children}
+              <Footer />
+            </body>
+          </html>
         </Provider>
       </ClerkProvider>
-       <Toaster />
-    
+      <Toaster />
     </Suspense>
-    
   );
 }

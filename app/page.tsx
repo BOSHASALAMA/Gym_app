@@ -1,13 +1,14 @@
-import Classtime from "@/_components/Classtime";
-import Contact from "@/_components/Contact";
-import { CrossFit } from "@/_components/CrossFit";
-import Exercises from "@/_components/Exercises";
 import { Hero } from "@/_components/Hero";
-import { Offers } from "@/_components/Offers";
-import { Pricing } from "@/_components/Pricing";
-import { Programms } from "@/_components/Programms";
-import { Training } from "@/_components/Training";
-import Image from "next/image";
+import dynamic from "next/dynamic";
+
+const Training = dynamic(() => import("@/_components/Training"));
+const Offers = dynamic(() => import("@/_components/Offers"));
+const Programms = dynamic(() => import("@/_components/Programms"));
+const Pricing = dynamic(() => import("@/_components/Pricing"));
+const CrossFit = dynamic(() => import("@/_components/CrossFit"));
+const Exercises = dynamic(() => import("@/_components/Exercises"));
+const Classtime = dynamic(() => import("@/_components/Classtime"));
+const Contact = dynamic(() => import("@/_components/Contact"));
 
 export default function Home() {
   return (
@@ -16,9 +17,9 @@ export default function Home() {
       <Training />
       <Offers />
       <CrossFit />
-      <Programms/>
-      <Classtime/>
-      <Exercises/>
+      <Programms />
+      <Classtime />
+      <Exercises />
       <Pricing />
       <Contact />
     </div>

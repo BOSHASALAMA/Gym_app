@@ -7,11 +7,11 @@ import { SignInButton, SignOutButton, UserButton } from "@clerk/nextjs";
 import { useUser } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 
-export const Header =  () => {
+export const Header = () => {
   const { user } = useUser();
-  const [userRole, setUserRole] = useState<string | null>(null)
+  const [userRole, setUserRole] = useState<string | null>(null);
 
-useEffect(() => {
+  useEffect(() => {
     // Reset userRole when user logs out
     if (!user) {
       setUserRole(null);
@@ -20,36 +20,35 @@ useEffect(() => {
 
     const fetchUserRole = async () => {
       if (user?.id && user?.primaryEmailAddress?.emailAddress) {
-    try { 
-      const response = await fetch('/api/user',{
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json', 
-        },
-        body: JSON.stringify({
-          userId: user.id,
-          email: user.primaryEmailAddress.emailAddress,
-          name: user.fullName
-      })
-      });
-      const data = await response.json();
-      console.log("Fetched user data:", data);
-      setUserRole(data.role);
-    } catch (error) {
-      console.error("Error fetching user role:", error); 
-      }}
+        try {
+          const response = await fetch("/api/user", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              userId: user.id,
+              email: user.primaryEmailAddress.emailAddress,
+              name: user.fullName,
+            }),
+          });
+          const data = await response.json();
+          console.log("Fetched user data:", data);
+          setUserRole(data.role);
+        } catch (error) {
+          console.error("Error fetching user role:", error);
+        }
+      }
+    };
+    fetchUserRole();
+  }, [user]);
 
-}  
-fetchUserRole();  
-  }, [user])
-
-  const isAdmin = userRole === "admin"
-  const isUser = userRole === "user"
-;
+  const isAdmin = userRole === "admin";
+  const isUser = userRole === "user";
   return (
     <div>
       <header className="bg-linear-to-r from-orange-950 via-black to-red-900 z-50 shadow-lg shadow-red-400 fixed  w-full text-white overflow-x-hidden">
-        <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4">
+        <nav className="mx-auto flex h-20 max-w-7xl items-center md:justify-evenly justify-between px-4">
           {/* Logo */}
           <Link
             href="/"
@@ -61,28 +60,48 @@ fetchUserRole();
           </Link>
 
           {/* Desktop Links */}
-          <div className="hidden md:flex gap-20 m-30">
-            <Link href="/" prefetch={true}>Home</Link>
-            <Link href="#"prefetch={true} onClick={(e) => {
-    e.preventDefault();
-    document.getElementById('about')?.scrollIntoView({
-      behavior: 'smooth'
-    });
-  }}>About</Link>
-            <Link href="#" prefetch={true} onClick={(e) => {
-    e.preventDefault();
-    document.getElementById('pricing')?.scrollIntoView({
-      behavior: 'smooth'
-    });
-  }}>Pricing</Link>
-            <Link href="#" prefetch={true} onClick={(e) => {
-    e.preventDefault();
-    document.getElementById('contact')?.scrollIntoView({
-      behavior: 'smooth'
-    });
-  }}>Contact</Link>
+          <div className="hidden md:flex gap-20 lg:m-20 md:m-10 sm:m-5">
+            <Link href="/" prefetch={true}>
+              Home
+            </Link>
+            <Link
+              href="#"
+              prefetch={true}
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("about")?.scrollIntoView({
+                  behavior: "smooth",
+                });
+              }}
+            >
+              About
+            </Link>
+            <Link
+              href="#"
+              prefetch={true}
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("pricing")?.scrollIntoView({
+                  behavior: "smooth",
+                });
+              }}
+            >
+              Pricing
+            </Link>
+            <Link
+              href="#"
+              prefetch={true}
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("contact")?.scrollIntoView({
+                  behavior: "smooth",
+                });
+              }}
+            >
+              Contact
+            </Link>
           </div>
-          <div className="w-full hidden md:flex justify-center gap-24">
+          <div className="w-fit hidden md:flex justify-center gap-10 ">
             <UserButton />
             {user ? (
               <SignOutButton>
@@ -94,13 +113,13 @@ fetchUserRole();
               </SignInButton>
             )}
           </div>
-{isAdmin && (
-  <div>
-    <Link href="/orders" prefetch={true}>
-    <Button variant="outline">Orders</Button>
-    </Link>
-  </div>
-)}
+          {isAdmin && (
+            <div>
+              <Link href="/orders" prefetch={true}>
+                <Button variant="outline">Orders</Button>
+              </Link>
+            </div>
+          )}
           {/* Mobile Menu (Client Component) */}
           <MobileMenu />
         </nav>
