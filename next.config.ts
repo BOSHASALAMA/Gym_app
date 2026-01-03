@@ -16,8 +16,8 @@ const nextConfig: NextConfig = {
   
   images: {
     formats: ['image/avif', 'image/webp'],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     minimumCacheTTL: 60 * 60 * 24 * 365,
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
@@ -35,7 +35,7 @@ const nextConfig: NextConfig = {
     scrollRestoration: true,
   },
   
-  // Security and Performance headers
+  // Security headers
   async headers() {
     return [
       {
@@ -55,48 +55,8 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-      // Cache static images aggressively
-      {
-        source: '/public/:all*(svg|jpg|jpeg|png|webp|avif|gif|ico)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-      {
-        source: '/:all*(svg|jpg|jpeg|png|webp|avif|gif|ico)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-      // Cache Next.js static assets
-      {
-        source: '/_next/static/:path*',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-      // Cache fonts
-      {
-        source: '/:all*(woff|woff2|ttf|otf|eot)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
     ]
   },
-  
   trailingSlash: false,
   skipTrailingSlashRedirect: true,
 };
