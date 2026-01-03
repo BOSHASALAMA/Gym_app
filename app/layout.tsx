@@ -21,7 +21,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "FITNESS GYM",
-  description: "WITH PATRIC POTTER",
+  description: "WITH PATRIC POTTER - BUILD PERFECT BODY SHAPE",
   viewport: "width=device-width, initial-scale=1",
 };
 
@@ -48,9 +48,8 @@ export default async function RootLayout({
         <Provider>
           <html
             lang="en"
-            className={`${geistSans.variable} ${geistMono.variable}`}
+          
           >
-            <head>
               <link rel="dns-prefetch" href="https://clerk.accounts.dev" />
               <link
                 rel="preconnect"
@@ -61,7 +60,6 @@ export default async function RootLayout({
                 name="viewport"
                 content="width=device-width, initial-scale=1"
               />
-            </head>
 
             <body className="relative bg-black ">
               <Header />
