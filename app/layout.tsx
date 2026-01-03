@@ -33,7 +33,9 @@ export default async function RootLayout({
 }>) {
   return (
     <Suspense>
-      <ClerkProvider appearance={{ baseTheme: dark }}>
+      <ClerkProvider appearance={{ baseTheme: dark  ,elements: {
+          rootBox: "shadow-none"
+        }}} >
         <Provider>
           <html lang="en">
             <body className="relative bg-black ">

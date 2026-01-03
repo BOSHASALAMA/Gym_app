@@ -29,6 +29,8 @@ export default async function CrossFit() {
             height={300}
             className="w-80 h-60 md:w-120 md:h-90"
             alt="crossfit"
+            loading="lazy"
+            quality={75}
           />
         </div>
       </section>
