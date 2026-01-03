@@ -1,5 +1,4 @@
 "use cache";
-import React from "react";
 import { HoverEffect } from "@/components/ui/card-hover-effect";
 
 export default async function Offers() {
