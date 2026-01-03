@@ -39,6 +39,11 @@ export default async function RootLayout({
             rootBox: "shadow-none",
           },
         }}
+        dynamic
+        signInUrl="/sign-in"
+        signUpUrl="/sign-up"
+        afterSignInUrl="/"
+        afterSignUpUrl="/"
       >
         <Provider>
           <html lang="en">
@@ -48,6 +53,11 @@ export default async function RootLayout({
               href="https://clerk.accounts.dev"
               crossOrigin="anonymous"
             />
+            <meta
+              name="viewport"
+              content="width=device-width, initial-scale=1"
+            />
+
             <body className="relative bg-black ">
               <Header />
 
