@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
   productionBrowserSourceMaps: false,
   compress: true,
   poweredByHeader: false,
-  reactStrictMode: false,
+  reactStrictMode: true,
 
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production' ? {
@@ -18,9 +18,11 @@ const nextConfig: NextConfig = {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256],
-    minimumCacheTTL: 60 * 60 * 24 * 365,
+    minimumCacheTTL: 60 ,
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    contentDispositionType: 'attachment',
+
     remotePatterns: [
       {
         protocol: 'https',
@@ -28,6 +30,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+
   
   experimental: {
     optimizePackageImports: ['lucide-react', '@clerk/nextjs'],
