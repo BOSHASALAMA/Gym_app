@@ -39,6 +39,7 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ['lucide-react', '@clerk/nextjs'],
     optimizeCss: true,
     scrollRestoration: true,
+    cssChunking: 'strict', // يقلل عدد ملفات CSS
     serverActions: {
       bodySizeLimit: '2mb',
     },
