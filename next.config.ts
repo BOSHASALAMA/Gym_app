@@ -33,9 +33,11 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ['lucide-react', '@clerk/nextjs'],
     optimizeCss: true,
     scrollRestoration: true,
+    serverActions: {
+      bodySizeLimit: '2mb',
+    },
   },
   
-  // Security and Performance headers
   async headers() {
     return [
       {
