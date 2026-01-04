@@ -10,7 +10,7 @@ export const Hero = async () => {
         src="/gym_back.webp"
         alt="Gym background"
         fill
-        priority
+        priority={true}
         quality={60}
         sizes="100vw"
         className="object-cover -z-10"

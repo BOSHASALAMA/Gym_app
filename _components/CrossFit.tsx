@@ -31,6 +31,7 @@ export default async function CrossFit() {
             alt="crossfit"
             loading="lazy"
             quality={75}
+            priority={false}
           />
         </div>
       </section>

@@ -1,6 +1,50 @@
-"use cache";
 
-export default async function Page() {
+import type { Metadata, Viewport } from "next";
+
+export const metadata: Metadata = {
+  title: "Group Training Benefits - FITNESS GYM",
+  description: "Experience the power of community-driven fitness with our dynamic group training sessions designed for motivation, fun, and results.",
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+};
+
+const benefits = [
+  {
+    emoji: "👥",
+    title: "Community Support",
+    description: "Train with like-minded individuals who share your goals. Build lasting friendships and create a support network that keeps you motivated."
+  },
+  {
+    emoji: "🎉",
+    title: "Fun & Engaging",
+    description: "Enjoy high-energy workouts with music, games, and team challenges that make exercise feel like play while getting amazing results."
+  },
+  {
+    emoji: "💰",
+    title: "Cost Effective",
+    description: "Get professional training at a fraction of the cost of personal sessions. Quality instruction with the added benefit of group dynamics."
+  },
+  {
+    emoji: "🏆",
+    title: "Competitive Edge",
+    description: "Push your limits with friendly competition. The group's energy drives everyone to perform better and achieve more together."
+  },
+  {
+    emoji: "📅",
+    title: "Regular Schedule",
+    description: "Stay consistent with structured class times. Regular attendance becomes a habit, leading to better long-term results and consistency."
+  },
+  {
+    emoji: "🎓",
+    title: "Learn from Others",
+    description: "Observe different techniques and approaches. Group settings provide opportunities to learn new exercises and training methods."
+  }
+];
+
+export default function GroupPage() {
   return (
     <div className="min-h-screen text-white bg-linear-to-r from-black via-red-900 to-black py-32">
       <div className="max-w-6xl mx-auto px-4">
@@ -15,62 +59,18 @@ export default async function Page() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          <div className="bg-gray-900/50 p-8 rounded-lg border border-gray-700 hover:border-red-500 transition-colors">
-            <div className="text-red-500 text-4xl mb-4">👥</div>
-            <h3 className="text-xl font-bold mb-3">Community Support</h3>
-            <p className="text-gray-300">
-              Train with like-minded individuals who share your goals. Build
-              lasting friendships and create a support network that keeps you
-              motivated.
-            </p>
-          </div>
-
-          <div className="bg-gray-900/50 p-8 rounded-lg border border-gray-700 hover:border-red-500 transition-colors">
-            <div className="text-red-500 text-4xl mb-4">🎉</div>
-            <h3 className="text-xl font-bold mb-3">Fun & Engaging</h3>
-            <p className="text-gray-300">
-              Enjoy high-energy workouts with music, games, and team challenges
-              that make exercise feel like play while getting amazing results.
-            </p>
-          </div>
-
-          <div className="bg-gray-900/50 p-8 rounded-lg border border-gray-700 hover:border-red-500 transition-colors">
-            <div className="text-red-500 text-4xl mb-4">💰</div>
-            <h3 className="text-xl font-bold mb-3">Cost Effective</h3>
-            <p className="text-gray-300">
-              Get professional training at a fraction of the cost of personal
-              sessions. Quality instruction with the added benefit of group
-              dynamics.
-            </p>
-          </div>
-
-          <div className="bg-gray-900/50 p-8 rounded-lg border border-gray-700 hover:border-red-500 transition-colors">
-            <div className="text-red-500 text-4xl mb-4">🏆</div>
-            <h3 className="text-xl font-bold mb-3">Competitive Edge</h3>
-            <p className="text-gray-300">
-              Push your limits with friendly competition. The group's energy
-              drives everyone to perform better and achieve more together.
-            </p>
-          </div>
-
-          <div className="bg-gray-900/50 p-8 rounded-lg border border-gray-700 hover:border-red-500 transition-colors">
-            <div className="text-red-500 text-4xl mb-4">📅</div>
-            <h3 className="text-xl font-bold mb-3">Regular Schedule</h3>
-            <p className="text-gray-300">
-              Stay consistent with structured class times. Regular attendance
-              becomes a habit, leading to better long-term results and
-              consistency.
-            </p>
-          </div>
-
-          <div className="bg-gray-900/50 p-8 rounded-lg border border-gray-700 hover:border-red-500 transition-colors">
-            <div className="text-red-500 text-4xl mb-4">🎓</div>
-            <h3 className="text-xl font-bold mb-3">Learn from Others</h3>
-            <p className="text-gray-300">
-              Observe different techniques and approaches. Group settings
-              provide opportunities to learn new exercises and training methods.
-            </p>
-          </div>
+          {benefits.map((benefit, index) => (
+            <div
+              key={index}
+              className="bg-gray-900/50 p-8 rounded-lg border border-gray-700 hover:border-red-500 transition-colors"
+            >
+              <div className="text-red-500 text-4xl mb-4" aria-hidden="true">
+                {benefit.emoji}
+              </div>
+              <h3 className="text-xl font-bold mb-3">{benefit.title}</h3>
+              <p className="text-gray-300">{benefit.description}</p>
+            </div>
+          ))}
         </div>
 
         <div className="text-center">
