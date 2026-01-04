@@ -23,8 +23,6 @@ const nextConfig: NextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256],
     minimumCacheTTL: 60 ,
     dangerouslyAllowSVG: true,
-    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-    contentDispositionType: 'attachment',
 
     remotePatterns: [
       {
@@ -39,7 +37,7 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ['lucide-react', '@clerk/nextjs'],
     optimizeCss: true,
     scrollRestoration: true,
-    cssChunking: 'strict', // يقلل عدد ملفات CSS
+    cssChunking: 'strict', 
     serverActions: {
       bodySizeLimit: '2mb',
     },
@@ -122,14 +120,7 @@ const nextConfig: NextConfig = {
     ]
   },
   
-  // FIX REDIRECTS: Remove trailing slash redirects
-  trailingSlash: false,
-  skipTrailingSlashRedirect: true,
-  
-  // Add redirects section to handle any potential loops
-  async redirects() {
-    return [];
-  },
+ 
   
 };
 

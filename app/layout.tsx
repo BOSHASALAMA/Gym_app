@@ -39,7 +39,7 @@ export default async function RootLayout({
         appearance={{
           baseTheme: dark,
           elements: {
-            rootBox: "shadow-none",
+          rootBox: "clerk-root",
           },
         }}
         dynamic

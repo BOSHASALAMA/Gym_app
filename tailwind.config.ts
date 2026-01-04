@@ -11,12 +11,7 @@ const config: Config = {
     extend: {},
   },
   plugins: [],
-  // Optimize for production
-  ...(process.env.NODE_ENV === 'production' && {
-    future: {
-      hoverOnlyWhenSupported: true,
-    },
-  }),
+ 
 };
 
 export default config;
