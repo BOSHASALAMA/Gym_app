@@ -8,13 +8,10 @@ import {
   useUser,
 } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
-import { usePathname } from "next/navigation";
 
 export const MobileMenu = () => {
   const [open, setOpen] = useState(false);
   const { user } = useUser();
-  const pathname = usePathname();
-  const isHomePage = pathname === "/";
 
   return (
     <div className="md:hidden">
@@ -48,23 +45,41 @@ export const MobileMenu = () => {
             Home
           </Link>
           <Link
-            href={isHomePage ? "#about" : "/#about"}
+            href="#"
             prefetch={true}
-            onClick={() => setOpen(false)}
+            onClick={(e) => {
+              setOpen(false);
+              e.preventDefault();
+              document.getElementById("about")?.scrollIntoView({
+                behavior: "smooth",
+              });
+            }}
           >
             About
           </Link>
           <Link
-            href={isHomePage ? "#pricing" : "/#pricing"}
+            href="#"
             prefetch={true}
-            onClick={() => setOpen(false)}
+            onClick={(e) => {
+              setOpen(false);
+              e.preventDefault();
+              document.getElementById("pricing")?.scrollIntoView({
+                behavior: "smooth",
+              });
+            }}
           >
             Pricing
           </Link>
           <Link
-            href={isHomePage ? "#contact" : "/#contact"}
+            href="#"
             prefetch={true}
-            onClick={() => setOpen(false)}
+            onClick={(e) => {
+              setOpen(false);
+              e.preventDefault();
+              document.getElementById("contact")?.scrollIntoView({
+                behavior: "smooth",
+              });
+            }}
           >
             Contact
           </Link>

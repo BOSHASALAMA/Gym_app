@@ -1,16 +1,14 @@
 "use client";
-import { useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import { MobileMenu } from "./MobileMenu";
 import Link from "next/link";
 import { Dumbbell } from "lucide-react";
 import { SignInButton, SignOutButton, UserButton } from "@clerk/nextjs";
 import { useUser } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
-import { usePathname } from "next/navigation";
 
 export const Header = () => {
   const { user } = useUser();
-  const pathname = usePathname();
   const [userRole, setUserRole] = useState<string | null>(null);
 
   useEffect(() => {
@@ -46,11 +44,10 @@ export const Header = () => {
   }, [user]);
 
   const isAdmin = userRole === "admin";
-  const isHomePage = pathname === "/";
-
+  const isUser = userRole === "user";
   return (
     <div>
-      <header className="bg-linear-to-r from-orange-950 via-black to-red-900 z-50 shadow-lg shadow-red-400 fixed w-full text-white overflow-x-hidden">
+      <header className="bg-linear-to-r from-orange-950 via-black to-red-900 z-50 shadow-lg shadow-red-400 fixed  w-full text-white overflow-x-hidden">
         <nav className="mx-auto flex h-20 max-w-7xl items-center md:justify-evenly justify-between px-4">
           {/* Logo */}
           <Link
@@ -68,25 +65,43 @@ export const Header = () => {
               Home
             </Link>
             <Link
-              href={isHomePage ? "#about" : "/#about"}
+              href="#"
               prefetch={true}
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("about")?.scrollIntoView({
+                  behavior: "smooth",
+                });
+              }}
             >
               About
             </Link>
             <Link
-              href={isHomePage ? "#pricing" : "/#pricing"}
+              href="#"
               prefetch={true}
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("pricing")?.scrollIntoView({
+                  behavior: "smooth",
+                });
+              }}
             >
               Pricing
             </Link>
             <Link
-              href={isHomePage ? "#contact" : "/#contact"}
+              href="#"
               prefetch={true}
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("contact")?.scrollIntoView({
+                  behavior: "smooth",
+                });
+              }}
             >
               Contact
             </Link>
           </div>
-          <div className="w-fit hidden md:flex justify-center gap-10 items-center">
+          <div className="w-fit hidden md:flex justify-center gap-10 ">
             <UserButton />
             {user ? (
               <SignOutButton>
@@ -97,14 +112,15 @@ export const Header = () => {
                 <Button>sign in</Button>
               </SignInButton>
             )}
-          
           </div>
-          {/* Mobile Menu (Client Component) */}
-            {isAdmin && (
+          {isAdmin && (
+            <div>
               <Link href="/orders" prefetch={true}>
                 <Button variant="outline">Orders</Button>
               </Link>
-            )}
+            </div>
+          )}
+          {/* Mobile Menu (Client Component) */}
           <MobileMenu />
         </nav>
       </header>
