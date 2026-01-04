@@ -1,5 +1,5 @@
 "use client";
-import React, {  useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import { MobileMenu } from "./MobileMenu";
 import Link from "next/link";
 import { Dumbbell } from "lucide-react";

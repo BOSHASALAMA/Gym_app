@@ -1,6 +1,5 @@
 "use cache";
 import Image from "next/image";
-import React from "react";
 
 export default async function CrossFit() {
   return (
